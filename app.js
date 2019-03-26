@@ -101,6 +101,6 @@ app.post('/call/add', function(req, res){
 
 app.listen(process.env.PORT, process.env.IP, function(){
    console.log("The lister is listing."); 
-});
+);
 
 module.exports = app;
