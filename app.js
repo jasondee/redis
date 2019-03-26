@@ -7,7 +7,7 @@ var redis = require("redis");
 var app = express();
 
 //Connection for RTG
-var client = redis.createClient(10098, "redis://redistogo:ceaac8d9d98c8e12e91816b17b0fa213@barb.redistogo.com");
+var client = redis.createClient({port : 10098, host : "barb.redistogo.com", password : "ceaac8d9d98c8e12e91816b17b0fa213"});
 
 client.on('connect', function() {
     console.log('Redis client connected');
