@@ -6,22 +6,24 @@ var redis = require("redis");
 
 var app = express();
 
-//if (process.env.REDISTOGO_URL) {
-    //var rtg   = require("url").parse(process.env.REDISTOGO_URL);
-    //var redis = require("redis").createClient(rtg.port, rtg.hostname);
+//Connection for RTG
+var client = redis.createClient(10098, "ceaac8d9d98c8e12e91816b17b0fa213@barb.redistogo.com");
 
-    //redis.auth(rtg.auth.split(":")[1]);
-//} else {
-    //var redis = require("redis").createClient();
-//}
+client.on('connect', function() {
+    console.log('Redis client connected');
+});
+
+client.on('error', function (err) {
+    console.log('Something went wrong ' + err);
+});
 
 // Original Connection
 
-var client = redis.createClient();
+//var client = redis.createClient();
 
-client.on("connect", function(){
-    console.log("Redis server is connected.");
-});
+//client.on("connect", function(){
+   // console.log("Redis server is connected.");
+//});
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
